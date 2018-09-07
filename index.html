@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Shorthand properties - CSS - Technical Documentation - FCC</title>
+  
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <nav id="navbar">
+  <header>Shorthand properties - CSS</header>
+  <ul>
+    <a class="nav-link"href="#Introduction" rel="internal"><li>Introduction</li></a>
+    <a class="nav-link"href="#Tricky_edge_cases" rel="internal"><li>Tricky edge cases</li></a>
+    <a class="nav-link"href="#Background_properties" rel="internal"><li>Background properties</li></a>
+    <a class="nav-link"href="#Font_properties" rel="internal"><li>Font properties</li></a>
+    <a class="nav-link"href="#Border_properties" rel="internal"><li>Border properties</li></a>
+    <a class="nav-link"href="#Margin_and_padding_properties" rel="internal"><li>Margin and padding properties</li></a>
+    <a class="nav-link"href="#The_universal_shorthand_property" rel="internal"><li>The universal shorthand property</li></a>
+  </ul>
+</nav>
+
+<main id="main-doc">
+  
+  <section class="main-section" id="Introduction">
+    <header>Introduction</header>
+    <p><strong>Shorthand properties</strong> are CSS properties that let you set the values of multiple other CSS properties simultaneously. Using a shorthand property, you can write more concise (and often more readable) style sheets, saving time and energy.</p>
+    
+    <p>The CSS specification defines shorthand properties to group the definition of common properties acting on the same theme.</p>
+  </section>
+  <hr />
+  <section class="main-section" id="Tricky_edge_cases">
+    <header>Tricky edge cases</header>
+    <p>Even if they are very convenient to use, there are a few edge cases to keep in mind when using them:</p>
+  
+    <li>A value which is not specified is set to its initial value. That sounds anecdotal, but it really means that it overrides previously set values. Therefore:
+      <code>{
+background-color: red;
+background: url(image/bg.gif) no-reapet left top;
+}
+    </code>
+      will not set the color of the background to red but to background-color's default, transparent, as the second rule has precedence.</li>
+    
+    <li>Only the individual properties values can inherit. As missing values are replaced by their initial value, it is impossible to allow inheritance of individual properties by omitting them. The keyword inherit can be applied to a property, but only as a whole, not as a keyword for one value or another. That means that the only way to make some specific value to be inherited is to use the longhand property with the keyword inherit.</li>
+    
+    <li>Shorthand properties try not to force a specific order for the values of the properties they replace. This works well when these properties use values of different types, as the order has no importance, but this does not work as easily when several properties can have identical values.</li>
+
+  </section>
+   <hr />
+  <section class="main-section" id="Background_properties">
+    <header>Background properties</header>
+    <p>A background with the following properties ...
+      <code>{
+background-color: #000;
+background-image: url(images/bg.gif);
+background-repeat: no-repeat;
+background-position: left top;
+}        
+      </code>
+      ... can be shortened to just one declaration:
+      <code> {
+background: #000 url(images/bg.gif) no-repeat left top;
+}
+      </code>
+      </p>
+    </section>
+   <hr />
+  <section class="main-section" id="Font_properties">
+    <header>Font properties</header>
+    <p>The following declarations ...
+      <code>{
+font-style: italic;
+font-weight: bold;
+font-size: .8em;
+line-height: 1.2;
+font-family: Arial, sans-serif;
+}
+      </code>
+      ... can be shortened to the following:
+      <code>{
+font: italic bold .8em/1.2 Arial, sans-serif;
+}
+      </code>
+    </p>
+   </section>
+   <hr />
+  <section class="main-section" id="Border_properties">
+    <header>Border properties</header>
+    <p>With borders, the width, color, and style can be simplified into one declaration. For example, the following CSS ...
+      <code> {
+border-width: 1px;
+border-style: solid;
+border-color: #000;
+}
+      </code>
+      ... can be simplified as:
+      <code> {
+border: 1px solid #000;
+}
+      </code>
+  </section>
+   <hr />
+  <section class="main-section" id="Margin_and_padding_properties">
+    <header>Margin and padding properties</header>
+    <p>Shorthand versions of margin and padding values work the same way. The following CSS declarations ...
+      <code>
+margin-top: 10px;
+margin-right: 5px;
+margin-bottom: 10px;
+margin-left: 5px;
+      </code>
+      ... are the same as the following declaration. Note that the values are in clockwise order, beginning at the top: top, right, bottom, then left (TRBL, the consonants in "trouble").
+    </p>
+  </section>
+  <hr />
+  <section class="main-section" id="The_universal_shorthand_property">
+    <header>The universal shorthand property</header>
+    <p>CSS provides a universal shorthand property, all, which applies its value to every property in the document. Its purpose is to change the properties' inheritance model to one of:</p>
+    <li>CSS provides four special universal property values for specifying inheritance:</li>
+    <p class="value">inherit</p>
+    <li>Sets the property value applied to a selected element to be the same as that of its parent element.</li>
+    <p class="value">initial</p>
+    <li>Sets the property value applied to a selected element to be the same as the value set for that element in the browser's default style sheet. If no value is set by the browser's default style sheet and the property is naturally inherited, then the property value is set to inherit instead.</li>
+    <p class="value">unset</p>
+    <li>Resets the property to its natural value, which means that if the property is naturally inherited it acts like inherit, otherwise it acts like initial.</li>
+    <p class="value">revert</p>
+    <li>Reverts the property to the value it would have had if the current origin had not applied any styles to it. In other words, the property's value is set to the user stylesheet's value for the property (if one is set), otherwise the property's value is taken from the user-agent's default stylesheet.</li>
+  </section>
+  
+<footer class="link">
+      <a class="source" href="https://github.com/alesulej" target="_blank"></img><img class="icon" src="https://www.shareicon.net/download/2016/07/09/118688_repository_512x512.png" alt="github-icon" ></a>
+  <a class="source" href="https://codepen.io/aleksandra-sulej/" target="_blank"><img class="icon" src="http://cdn.onlinewebfonts.com/svg/img_336066.png" alt="codepen-icon"></a>
+      <a class="source" href="https://www.freecodecamp.org/fcc41540ec7-156c-4140-9311-9285b7d9fed2" target="_blank">
+        <img class="icon" src="https://png.pngtree.com/svg/20161103/free_code_camp_31977.png" alt="freecodecamp-icon"></a>
+  <p>&copy 2018 Aleksandra Sulej</p>
+</footer>   
+</main>
+  
+  
+
+</body>
+
+</html>
